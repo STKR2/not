@@ -1,6 +1,6 @@
 {
   "name": "استخراج كود بايروجرام احدث اصدار .",
-  "description": "- انت تستخدم احدث اصدار من السورس .",
+  "description": "انت تستخدم احدث اصدار من السورس .",
   "logo": "https://te.legra.ph/file/e9667fc76b311f97fa0e3.jpg",
   "keywords": [
     "telegram",
@@ -27,9 +27,8 @@
             "description": "- لاتغيرها ابدا .",
             "required": true
             "value": "8934899"
-            
-
-        },
+             
+            },
         "OWNER_ID": {
             "description": "- اكتب ايدي مطور البوت .",
             "required": true
@@ -47,3 +46,5 @@
         }
     ]
 }
+ 
+
