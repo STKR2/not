@@ -69,9 +69,9 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             ty += " ᴠ2"
     if is_bot:
         ty += " ʙᴏᴛ"
-    await msg.reply(f"- انتظر قليلاً **{ty}** تحت أمرك ...")
+    await msg.reply(f"- انتظر قليلاً **{ty}** تحت أمرك .")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "- الان ارسل لي الايبي ايدي \n\n- اذا ماعندك اكتب سكب .", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "- الان ارسل لي الايبي ايدي \n\n- اذا مامستخرجهن اكتب سكب .", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "سكب":
@@ -88,7 +88,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "- الان ارسل لي رقمك \n - على سبيل المثال : +9640000000000"
+        t = "- الان ارسل لي رقمك \n- على سبيل المثال : +9640000000000"
     else:
         t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
@@ -96,7 +96,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ sᴇɴᴅ ᴏᴛᴩ ᴀᴛ ᴛʜᴇ ɢɪᴠᴇɴ ɴᴜᴍʙᴇʀ...")
+        await msg.reply("- يتم التحقق من الرقم .")
     else:
         await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
     if telethon and is_bot:
