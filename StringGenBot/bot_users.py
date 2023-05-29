@@ -10,7 +10,7 @@ async def users_sql(_, msg: Message):
     await add_served_user(msg.from_user.id)
 
 
-@Client.on_message(filters.user(OWNER_ID) & filters.command("stats"))
+@Client.on_message(filters.user(OWNER_ID) & filters.command("الاحصائيات"))
 async def _stats(_, msg: Message):
     users = len(await get_served_users())
-    await msg.reply_text(f"» ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛs ᴏғ sᴛʀɪɴɢ ɢᴇɴ ʙᴏᴛ :\n\n {users} ᴜsᴇʀs", quote=True)
+    await msg.reply_text(f"- احصائيات البوت اخر فترة :\n\n {users} عدد المستخدمين ", quote=True)
