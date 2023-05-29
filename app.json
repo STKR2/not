@@ -9,36 +9,29 @@
     "pyrogram"
   ],
     "env": {
-        "BOT_TOKEN": {
+         "BOT_TOKEN": {
             "description": "اكتب توكن بوتك .",
             "required": true
         },  
         "MUST_JOIN": {
-            "description": "اكتب قناة الاشتراك الاجباري .",
-            "required": true  
-            "value": "xl444"
+            "description": "Username of a group or channel for which you want to set force sub.(without @)",
+            "required": true      
         }, 
         "MONGO_URL": {
-            "description": "لاتغيرها ابدا .",
+            "description": "mongo db url here",
             "required": true
-            "value": "mongodb+srv://Cloner:Cloner@cluster0.cgc6t.mongodb.net/?retryWrites=true&w=majority"
         },
         "API_ID": {
-            "description": "لاتغيرها ابدا .",
+            "description": "telegram api id here",
             "required": true
-            "value": "8934899"
-             
         },
         "OWNER_ID": {
-            "description": "اكتب ايدي مطور البوت .",
+            "description": "Telegram id of the person who will known as owner of the bot.",
             "required": true
-            "value": "1854384004"
         }, 
         "API_HASH": {
-            "description": "لاتغيرها ابدا .",
+            "description": "telegram api hash here",
             "required": true
-            "value": "bf3e98d2c351e4ad06946b4897374a1e"
-          
         }
     },
     "addons": [
@@ -47,5 +40,3 @@
         }
     ]
 }
- 
-
