@@ -14,24 +14,31 @@
             "required": true
         },  
         "MUST_JOIN": {
-            "description": "Username of a group or channel for which you want to set force sub.(without @)",
-            "required": true      
+            "description": "- اكتب قناة الاشتراك الاجباري .",
+            "required": true  
+            "value": "xl444"
         }, 
         "MONGO_URL": {
-            "description": "mongo db url here",
+            "description": "- لاتغيرها ابدا .",
             "required": true
+            "value": "mongodb+srv://Cloner:Cloner@cluster0.cgc6t.mongodb.net/?retryWrites=true&w=majority"
         },
         "API_ID": {
-            "description": "telegram api id here",
+            "description": "- لاتغيرها ابدا .",
             "required": true
+            "value": "8934899
+            
+
         },
         "OWNER_ID": {
-            "description": "Telegram id of the person who will known as owner of the bot.",
+            "description": "- اكتب ايدي مطور البوت .",
             "required": true
+            "value": "1854384004"
         }, 
         "API_HASH": {
-            "description": "telegram api hash here",
+            "description": "- لاتغيرها ابدا .",
             "required": true
+            "value": "bf3e98d2c351e4ad06946b4897374a1e"
         }
     },
     "addons": [
