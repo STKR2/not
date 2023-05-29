@@ -28,7 +28,7 @@
             "required": true
             "value": "8934899"
              
-            },
+        },
         "OWNER_ID": {
             "description": "اكتب ايدي مطور البوت .",
             "required": true
