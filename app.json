@@ -1,7 +1,7 @@
 {
-  "name": "sᴛʀɪɴɢ sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ",
-  "description": "A Telegram Bot to generate Telethon and Pyrogram String Sessions.",
-  "logo": "https://telegra.ph/file/9f31b3a61c4897b297a33.jpg",
+  "name": "استخراج كود بايروجرام احدث اصدار .",
+  "description": "- انت تستخدم احدث اصدار من السورس .",
+  "logo": "https://te.legra.ph/file/e9667fc76b311f97fa0e3.jpg",
   "keywords": [
     "telegram",
     "bot",
@@ -10,7 +10,7 @@
   ],
     "env": {
         "BOT_TOKEN": {
-            "description": "Get this value from @BotFather",
+            "description": "- اكتب توكن بوتك .",
             "required": true
         },  
         "MUST_JOIN": {
