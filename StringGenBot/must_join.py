@@ -20,11 +20,11 @@ async def must_join_channel(bot: Client, msg: Message):
                 link = chat_info.invite_link
             try:
                 await msg.reply_photo(
-                    photo="https://telegra.ph/file/654ddaf472f18b799600b.jpg", caption=f"» ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ʏᴏᴜ'ᴠᴇ ɴᴏᴛ ᴊᴏɪɴᴇᴅ [sᴜᴘᴘᴏʀᴛ]({link}) ʏᴇᴛ, ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴜsᴇ ᴍᴇ ᴛʜᴇɴ ᴊᴏɪɴ [sᴜᴘᴘᴏʀᴛ]({link}) ᴀɴᴅ sᴛᴀʀᴛ ᴍᴇ ᴀɢᴀɪɴ !",
+                    photo="https://te.legra.ph/file/e9667fc76b311f97fa0e3.jpg", caption=f"- اوكف اشترك بقناة البوت [فريدوم]({link}) حتى تكدر تستخدم بوت [فريدوم]({link}) بكل سهوله .",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("</> sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ", url=link),
+                                InlineKeyboardButton("- اضغط الإشتراك .", url=link),
                             ]
                         ]
                     )
@@ -33,4 +33,4 @@ async def must_join_channel(bot: Client, msg: Message):
             except ChatWriteForbidden:
                 pass
     except ChatAdminRequired:
-        print(f"Promote me as an admin in the MUST_JOIN chat : {MUST_JOIN} !")
+        print(f"- ارفع البوت ادمن بالقناة يامطي : {MUST_JOIN} !")
