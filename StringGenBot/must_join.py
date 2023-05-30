@@ -20,7 +20,7 @@ async def must_join_channel(bot: Client, msg: Message):
                 link = chat_info.invite_link
             try:
                 await msg.reply_photo(
-                    photo="https://te.legra.ph/file/e9667fc76b311f97fa0e3.jpg", caption=f"- اوكف اشترك بقناة البوت [فريدوم]({link}) حتى تكدر تستخدم بوت [فريدوم]({link}) بكل سهوله .",
+                    photo="https://te.legra.ph/file/5fdd8da2461c05d893189.jpg", caption=f"- اوكف اشترك بقناة البوت [فريدوم] ({link}) [freedom] ",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
