@@ -6,8 +6,8 @@ load_dotenv()
 API_ID = int(getenv("API_ID", "8934899"))
 API_HASH = getenv("API_HASH", "bf3e98d2c351e4ad06946b4897374a1e")
 
-BOT_TOKEN = getenv("BOT_TOKEN", "6285753283:AAFzXYMIrWkOmXpiAIpuqlOpvvuQdZcb-wE")
-OWNER_ID = int(getenv("OWNER_ID", "6291870327"))
+BOT_TOKEN = getenv("BOT_TOKEN", "")
+OWNER_ID = int(getenv("OWNER_ID", ""))
 
 MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://veez:mega@cluster0.heqnd.mongodb.net/veez?retryWrites=true&w=majority")
 MUST_JOIN = getenv("MUST_JOIN", "xl444")
