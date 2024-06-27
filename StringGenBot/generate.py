@@ -178,10 +178,10 @@ async def cancelled(msg):
     if "مسح" in msg.text:
         await msg.reply("- انت في وضع الاستخراج .", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
-    elif "ريستارت" في msg.text:
+    elif "ريستارت" in msg.text:
         await msg.reply("- تم اعادة تشغيل البوت بنحاح ", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
-    elif "تخطي" في msg.text:
+    elif "تخطي" في in msg.text:
         return False
     elif msg.text.startswith(" "):  # Bot Commands
         await msg.reply("- تم الغاء الاستخراج .", quote=True)
