@@ -1,10 +1,7 @@
 import traceback
-
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
-
 from StringGenBot.generate import generate_session, ask_ques, buttons_ques
-
 
 @Client.on_callback_query(filters.regex(pattern=r"^(generate|pyrogram|pyrogram1|pyrogram_bot|telethon_bot|telethon)$"))
 async def _callbacks(bot: Client, callback_query: CallbackQuery):
@@ -33,6 +30,5 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             print(traceback.format_exc())
             print(e)
             await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
-
 
 ERROR_MESSAGE = "- لقد ارسلت الرقم او شي غير صحيح \n- اذا استمرت المشكلة تحدث مع المطور @RR8R9"
