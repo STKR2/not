@@ -1,10 +1,9 @@
-from pyrogram.types import Message
-from telethon import TelegramClient
+import traceback
+import ntplib
+from time import ctime, time
+
 from pyrogram import Client, filters
-from pyrogram1 import Client as Client1
-from asyncio.exceptions import TimeoutError
-from telethon.sessions import StringSession
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import (
     ApiIdInvalid,
     PhoneNumberInvalid,
@@ -13,14 +12,8 @@ from pyrogram.errors import (
     SessionPasswordNeeded,
     PasswordHashInvalid
 )
-from pyrogram1.errors import (
-    ApiIdInvalid as ApiIdInvalid1,
-    PhoneNumberInvalid as PhoneNumberInvalid1,
-    PhoneCodeInvalid as PhoneCodeInvalid1,
-    PhoneCodeExpired as PhoneCodeExpired1,
-    SessionPasswordNeeded as SessionPasswordNeeded1,
-    PasswordHashInvalid as PasswordHashInvalid1
-)
+from telethon import TelegramClient
+from telethon.sessions import StringSession
 from telethon.errors import (
     ApiIdInvalidError,
     PhoneNumberInvalidError,
@@ -29,20 +22,27 @@ from telethon.errors import (
     SessionPasswordNeededError,
     PasswordHashInvalidError
 )
+from asyncio.exceptions import TimeoutError
 
 import config
 
-
+from pyrogram1 import Client as Client1
+from pyrogram1.errors import (
+    ApiIdInvalid as ApiIdInvalid1,
+    PhoneNumberInvalid as PhoneNumberInvalid1,
+    PhoneCodeInvalid as PhoneCodeInvalid1,
+    PhoneCodeExpired as PhoneCodeExpired1,
+    SessionPasswordNeeded as SessionPasswordNeeded1,
+    PasswordHashInvalid as PasswordHashInvalid1
+)
 
 ask_ques = "- الان اختر ماتريد استخراجة ."
 buttons_ques = [
     [
         InlineKeyboardButton("- بايروجرام .", callback_data="pyrogram1"),
-        
     ],
     [
         InlineKeyboardButton("- ثليثون .", callback_data="telethon"),
-   
     ],
 ]
 
@@ -52,7 +52,49 @@ gen_button = [
     ]
 ]
 
+ERROR_MESSAGE = "- لقد ارسلت الرقم او شي غير صحيح \n- اذا استمرت المشكلة تحدث مع المطور @RR8R9"
 
+
+async def synchronize_time():
+    try:
+        ntp_client = ntplib.NTPClient()
+        response = ntp_client.request('pool.ntp.org')
+        system_time = time()
+        ntp_time = response.tx_time
+        if abs(system_time - ntp_time) > 1:
+            print(f"System time: {ctime(system_time)}, NTP time: {ctime(ntp_time)}")
+            print("Time difference is significant, consider synchronizing your system clock.")
+    except Exception as e:
+        print(f"Failed to synchronize time: {e}")
+
+
+@Client.on_callback_query(filters.regex(pattern=r"^(generate|pyrogram|pyrogram1|pyrogram_bot|telethon_bot|telethon)$"))
+async def _callbacks(bot: Client, callback_query: CallbackQuery):
+    query = callback_query.matches[0].group(1)
+    if query == "generate":
+        await callback_query.answer()
+        await callback_query.message.reply(ask_ques, reply_markup=InlineKeyboardMarkup(buttons_ques))
+    elif query.startswith("pyrogram") or query.startswith("telethon"):
+        try:
+            if query == "pyrogram":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message)
+            elif query == "pyrogram1":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message, old_pyro=True)
+            elif query == "pyrogram_bot":
+                await callback_query.answer("» ᴛʜᴇ sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴡɪʟʟ ʙᴇ ᴏғ ᴩʏʀᴏɢʀᴀᴍ ᴠ2.", show_alert=True)
+                await generate_session(bot, callback_query.message, is_bot=True)
+            elif query == "telethon_bot":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message, telethon=True, is_bot=True)
+            elif query == "telethon":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message, telethon=True)
+        except Exception as e:
+            print(traceback.format_exc())
+            print(e)
+            await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
 
 
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
@@ -61,6 +103,7 @@ async def main(_, msg):
 
 
 async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: bool = False, is_bot: bool = False):
+    await synchronize_time()  # Synchronize time before connecting the client
     if telethon:
         ty = "ثليثون"
     else:
@@ -147,7 +190,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError, SessionPasswordNeeded1):
             try:
-                two_step_msg = await bot.ask(user_id, "- ارسل لي التحقق بخطوتين .", filters=filters.text, timeout=300)
+                two_step_msg = await bot.ask(user_id,two_step_msg = await bot.ask(user_id, "- ارسل لي التحقق بخطوتين .", filters=filters.text, timeout=300)
             except TimeoutError:
                 await msg.reply("- انتهى وقت إرسال التحقق بخطوتين .", reply_markup=InlineKeyboardMarkup(gen_button))
                 return
@@ -190,7 +233,7 @@ async def cancelled(msg):
     elif "ريستارت" in msg.text:
         await msg.reply("- تم اعادة تشغيل البوت بنحاح ", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
-    elif "تخطي" in msg.text:
+    elif "تخطي" في msg.text:
         return False
     elif msg.text.startswith(" "):  # Bot Commands
         await msg.reply("- تم الغاء الاستخراج .", quote=True)
