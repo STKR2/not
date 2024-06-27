@@ -173,18 +173,3 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         pass
     await client.disconnect()
     await bot.send_message(msg.chat.id, "- استخراج {} تم بنجاح .\n\n- دزيتلك الكود المستخرج ع الرسائل المحفوظة مال الرقم الي استخرجت بي . !".format("ثليثون" if telethon else "بايروجرام"))
-
-async def cancelled(msg):
-    if "مسح" in msg.text:
-        await msg.reply("- انت في وضع الاستخراج .", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
-        return True
-    elif "ريستارت" in msg.text:
-        await msg.reply("- تم اعادة تشغيل البوت بنحاح ", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
-        return True
-    elif "تخطي" في in msg.text:
-        return False
-    elif msg.text.startswith(" "):  # Bot Commands
-        await msg.reply("- تم الغاء الاستخراج .", quote=True)
-        return True
-    else:
-        return False
